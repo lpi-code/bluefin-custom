@@ -28,9 +28,6 @@ jobs:
         recipe:
           # !! Add your recipes here
           - recipe.yml
-        architecture:
-          - amd64    # x86_64 architecture
-          - arm64    # ARM64 architecture
     steps:
       # Set up QEMU for ARM emulation (required for cross-platform builds)
       - name: Set up QEMU
@@ -43,7 +40,8 @@ jobs:
           platforms: linux/amd64,linux/arm64
       
       # the build is fully handled by the reusable github action
-      - name: Build Custom Image (${{ matrix.architecture }})
+      # This will build for both amd64 and arm64 in a single multi-arch image
+      - name: Build Custom Image (Multi-Arch)
         uses: blue-build/github-action@v1.10
         with:
           recipe: ${{ matrix.recipe }}
@@ -53,5 +51,3 @@ jobs:
 
           # enabled by default, disable if your image is small and you want faster builds
           maximize_build_space: true
-        env:
-          DOCKER_DEFAULT_PLATFORM: linux/${{ matrix.architecture }}

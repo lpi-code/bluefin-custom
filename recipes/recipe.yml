@@ -9,6 +9,11 @@ description: This is my personal OS image.
 base-image: ghcr.io/ublue-os/bluefin
 image-version: stable # latest is also supported if you want new updates ASAP
 
+# build for multiple architectures (creates a multi-arch manifest list)
+platforms:
+  - linux/amd64
+  - linux/arm64
+
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
