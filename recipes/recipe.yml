@@ -56,9 +56,3 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
-  - type: default-flatpaks
-    notify: true
-    system:
-      install:
-        - org.mozilla.firefox
-        - com.visualstudio.code
