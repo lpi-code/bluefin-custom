@@ -42,7 +42,7 @@ jobs:
       # the build is fully handled by the reusable github action
       # This will build for both amd64 and arm64 in a single multi-arch image
       - name: Build Custom Image (Multi-Arch)
-        uses: blue-build/github-action@v1.10
+        uses: blue-build/github-action@v1.11
         with:
           recipe: ${{ matrix.recipe }}
           cosign_private_key: ${{ secrets.SIGNING_SECRET }}
